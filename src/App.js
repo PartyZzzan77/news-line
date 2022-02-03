@@ -12,9 +12,7 @@ class App extends Component {
     this.setState({ isLoading: true });
     fetch('http://localhost:3000/data/newsData.json')
       .then(response => response.json())
-      .then(data => this.setState({ news: data }));
-    this.setState({ isLoading: false });
-
+      .then(data => this.setState({ isLoading:false,news: data }));
   }
 
   handleAddNews = (data) => {
@@ -28,7 +26,7 @@ class App extends Component {
       <React.Fragment>
         <Add onAddNews={this.handleAddNews} />
         <h3>Новости</h3>
-        {isLoading && <p>Загружа...</p>}
+        {isLoading && <p>Загружаю...</p>}
         {Array.isArray(news) && <News data={news} />}
       </React.Fragment>
     );
