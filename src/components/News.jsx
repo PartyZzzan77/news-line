@@ -1,15 +1,32 @@
-import React, { Component } from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Article } from "./Article";
+import { Article } from './Article';
 
-class News extends Component {
+class News extends React.Component {
+  state = {
+    filteredNews: this.props.data,
+  }
+
+  static getDerivedStateFromProps(props) {
+    let nextFilteredNews = [...props.data];
+
+    nextFilteredNews.forEach((item) => {
+      if (item.text.toLowerCase().indexOf('qwerty') !== -1) {
+        item.text = 'SPAM';
+      }
+    })
+
+    return {
+      filteredNews: nextFilteredNews,
+    }
+  }
 
   renderNews = () => {
-    const { data } = this.props
-    let newsTemplate = null
+    const { filteredNews } = this.state;
+    let newsTemplate = null;
 
-    if (data.length) {
-      newsTemplate = data.map(function (item) {
+    if (filteredNews.length) {
+      newsTemplate = filteredNews.map(function (item) {
         return <Article key={item.id} data={item} />
       })
     } else {
@@ -19,20 +36,23 @@ class News extends Component {
     return newsTemplate
   }
   render() {
-    const { data } = this.props
+    const { filteredNews } = this.state;
 
     return (
-      <div className='news'>
+      <div className="news">
         {this.renderNews()}
-        {
-          data.length ? <strong className={'news__count'}>Всего новостей: {data.length}</strong> : null
-        }
+        {filteredNews.length ? (
+          <strong className={'news__count'}>
+            Всего новостей: {filteredNews.length}
+          </strong>
+        ) : null}
       </div>
-    );
+    )
   }
 }
 
 News.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
 }
-export { News };
+
+export { News }
