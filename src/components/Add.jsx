@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 class Add extends React.Component {
   state = {
@@ -8,8 +8,6 @@ class Add extends React.Component {
     bigText: '',
     agree: false,
   }
-
-
 
   onBtnClickHandler = (e) => {
     e.preventDefault()
@@ -38,29 +36,31 @@ class Add extends React.Component {
   render() {
     const { name, text } = this.state
     return (
-      <form className='add'>
+      <form className="add">
         <input
-          id='name'
-          type='text'
+          id="name"
+          type="text"
           onChange={this.handleChange}
-          className='add__author'
-          placeholder='Ваше имя'
+          className="add__author"
+          placeholder="Ваше имя"
           value={name}
         />
         <textarea
-          id='text'
+          id="text"
           onChange={this.handleChange}
-          className='add__text'
-          placeholder='Текст новости'
+          className="add__text"
+          placeholder="Текст новости"
           value={text}
         ></textarea>
-        <label className='add__checkrule'>
-          <input type='checkbox' onChange={this.handleCheckboxChange} /> Я согласен с правилами
+        <label className="add__checkrule">
+          <input type="checkbox" onChange={this.handleCheckboxChange} /> Я
+          согласен с правилами
         </label>
         <button
-          className='add__btn'
+          className="add__btn"
           onClick={this.onBtnClickHandler}
-          disabled={!this.validate()}>
+          disabled={!this.validate()}
+        >
           Показать новость
         </button>
       </form>
@@ -72,4 +72,4 @@ Add.propTypes = {
   onAddNews: PropTypes.func.isRequired,
 }
 
-export {Add};
+export { Add }
