@@ -1,10 +1,5 @@
-# Newsfeed component on React
+# News feed component on React
 
-### To use do this
+### This pet project is written in REACT CRA and built by Webpack 
 
-```
-git clone https://github.com/PartyZzzan77/news-line.git
-cd news-line
-npm i
-npm  start
-```
+
