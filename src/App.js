@@ -9,7 +9,7 @@ class App extends Component {
   }
   componentDidMount() {
     this.setState({ isLoading: true })
-    fetch('http://localhost:3000/data/newsData.json')
+    fetch('./data/newsData.json')
       .then((response) => response.json())
       .then((data) => this.setState({ isLoading: false, news: data }))
   }
